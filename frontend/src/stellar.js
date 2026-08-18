@@ -3,6 +3,7 @@ import {
   WalletNetwork,
   allowAllModules
 } from '@creit.tech/stellar-wallets-kit';
+import posthog from 'posthog-js';
 import {
   Address,
   nativeToScVal,
@@ -33,6 +34,12 @@ export async function connectWallet() {
   try {
     const { address } = await kit.connect();
     connectedAddress = address;
+    try {
+      posthog.identify(address);
+      posthog.capture('wallet_connected', { wallet: address });
+    } catch (e) {
+      console.warn('PostHog tracking failed:', e);
+    }
     return address;
   } catch (error) {
     console.error('Wallet connection failed:', error);
@@ -134,6 +141,15 @@ export async function invokeContract(functionName, args = [], signTx = true) {
       if (results.length > 0) {
         const scVal = results[0].tr().invokeHostFunctionResult().success();
         const localScVal = xdr.ScVal.fromXDR(scVal.toXDR('base64'), 'base64');
+        try {
+          posthog.capture('contract_transaction_success', {
+            function_name: functionName,
+            tx_hash: submission.hash,
+            wallet: address
+          });
+        } catch (e) {
+          console.warn('PostHog tracking failed:', e);
+        }
         return {
           hash: submission.hash,
           result: scValToNative(localScVal),
