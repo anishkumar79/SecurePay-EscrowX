@@ -6,7 +6,7 @@ import { StrKey } from '@stellar/stellar-sdk';
 import { Shield, Sparkles, Loader2, ArrowLeft } from 'lucide-react';
 
 // Native XLM SAC address on Testnet
-const NATIVE_XLM_SAC = 'CDLZFC3SYJYDZT7KKAUBQQATFRUI7J47G64Z4SM7T73K2HMR75TTGZ55';
+const NATIVE_XLM_SAC = 'CDLZFC3SYJYDZT7K67VZ75HPJVIEUVNIXF47ZG2FB2RMQQVU2HHGCYSC';
 
 export default function CreateEscrow() {
   const [address, setAddress] = useState(getConnectedAddress());
@@ -57,10 +57,11 @@ export default function CreateEscrow() {
 
     try {
       // Arguments: client (Address), freelancer (Address), token (Address), amount (i128), release_time (u64)
+      const stroopsAmount = BigInt(Math.round(parseFloat(amount) * 10000000));
       const clientVal = { _type: 'address', val: address };
       const freelancerVal = { _type: 'address', val: freelancer };
       const tokenVal = { _type: 'address', val: NATIVE_XLM_SAC };
-      const amountVal = { _type: 'i128', val: amount };
+      const amountVal = { _type: 'i128', val: stroopsAmount.toString() };
       const releaseTimeVal = { _type: 'u64', val: releaseTimestamp };
 
       // Invoke create_escrow on the Soroban contract

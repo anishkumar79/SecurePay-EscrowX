@@ -3,9 +3,15 @@
 EscrowX is a decentralized, transparent, and low-cost freelance payment protection escrow application built on the Stellar network using Soroban smart contracts. It empowers independent contractors and clients to transact safely without high fees or payment delay risks.
 
 ## Deployed Smart Contract Address (Testnet)
-- **Contract ID**: `CDCN2GVCSHP6UTJLV37KPAZDRJUJVIBOBFCWWXDHXT64YT42BFGI5FRP`
+- **Contract ID**: `CBGL7N5GANUBPAV2UHXC5UBW3JSXGNLAKOMVJD54YNIZF6WN6PHSMQAL`
 - **Network**: Stellar Testnet
-- **Token**: Native XLM Stellar Asset Contract (SAC): `CDLZFC3SYJYDZT7KKAUBQQATFRUI7J47G64Z4SM7T73K2HMR75TTGZ55`
+- **Token**: Native XLM Stellar Asset Contract (SAC): `CDLZFC3SYJYDZT7K67VZ75HPJVIEUVNIXF47ZG2FB2RMQQVU2HHGCYSC`
+
+---
+
+## Live Demo & Walkthrough
+- **Live Demo Link**: [escrow-x-secure-freelance-payments.vercel.app](https://escrow-x-secure-freelance-payments.vercel.app)
+- **Demo Video (YouTube)**: [Watch the EscrowX Walkthrough](https://youtu.be/mR9KDsVQ5Xw)
 
 ---
 
@@ -50,6 +56,30 @@ escrowx/
 
 ---
 
+## Product UI & Screenshots
+
+Below are screenshots demonstrating the product user interface, transaction progress tracking, mobile responsive design, and contract verification checks:
+
+### 1. Dashboard & Navigation
+![Dashboard](screenshots/dashboard.png)
+![Active Agreements](screenshots/contracts.png)
+
+### 2. Escrow Lifecycle & Progress Tracker
+![Contract Created](screenshots/contract_created.png)
+![Client Deposit & Lock](screenshots/client_deposit_lock.png)
+![Freelancer Release Request](screenshots/freelancer_asking_payment.png)
+![Progress Tracker Timeline](screenshots/progres_tarcker.png)
+![Successful Payout Settlement](screenshots/successfull_deal.png)
+![Contract Verification Ledger Checks](screenshots/sucess_verification.png)
+
+### 3. User Onboarding & Feedback
+![Feedback Collection Page](screenshots/feedbacks.png)
+
+### 4. Mobile & Tablet Responsiveness
+![Mobile Responsive Layout](screenshots/responsive_mobile_tab.png)
+
+---
+
 ## Setup & Running Locally
 
 ### Prerequisites
@@ -86,19 +116,19 @@ escrowx/
 
 ---
 
-## User Validation & Feedback (Stellar Testnet Proof)
+## Stellar Ledger Transaction Proofs (10+ On-Chain Interactions)
 
-We onboarded 10+ real testers who connected their Freighter wallets and executed contract transactions on testnet:
+The following table provides verified StellarExpert explorer links for the smart contract interactions performed during testing and user validation:
 
-| User | Wallet Address | Rating | Feedback / Comments | Status |
-|------|----------------|--------|---------------------|--------|
-| User 1 | GA2F...GPVB | 5/5 | Extremely fast transaction settlement, cost fraction of a cent! | Active |
-| User 2 | GATU...C2KK | 5/5 | UI is stunning, glassmorphism looks very premium. | Active |
-| User 3 | GBVG...7AZJ | 4/5 | Freighter wallet popup works perfectly. Skeletons look nice. | Active |
-| User 4 | GD4L...JHG3 | 5/5 | Locked XLM successfully. Deposit took 4 seconds. | Verified |
-| User 5 | GCSO...8KLQ | 5/5 | Refund after deadline works exactly as coded. | Verified |
-| User 6 | GAH2...PLKM | 4/5 | Love the progress bar on detail views. | Verified |
-| User 7 | GDKL...90UY | 5/5 | Cleanest Stellar interface I've used. | Verified |
-| User 8 | GBDW...TR54 | 4/5 | Works great, feedback submitted. | Verified |
-| User 9 | GCVB...MN12 | 5/5 | Deployed a custom agreement easily. | Verified |
-| User 10| GASY...DF99 | 5/5 | Super easy to request release. No bugs found. | Verified |
+| # | Action / Method | Wallet Address | Amount | Transaction Hash (StellarExpert Ledger Link) |
+|---|---|---|---|---|
+| 1 | `create_escrow` (Escrow #19) | Client: `GBCJEMERVSFFXKH3EMXELYFJOQ6NRDAW3F5LY3ZXIV46T4IOQO7YQLYV` <br> Freelancer: `GCESUOEA7VND4N45UBLRQBX3EEOI4G35CDQGOEVXN3RQ4VVD6GC2BVRQ` | 765 XLM | [View Tx Link](https://stellar.expert/explorer/testnet/tx/afe5e19b3cdbd9b871309bb8477daac0866aab82c7e6078fedd28d1431e15a43) |
+| 2 | `create_escrow` | Client: `GBCJEMERVSFFXKH3EMXELYFJOQ6NRDAW3F5LY3ZXIV46T4IOQO7YQLYV` <br> Freelancer: `GDVQHO34REU623J5I6TZ74SYRDUBRRZ7YVJN3X6E6WENDO5GY3LVD3CL` | 980 XLM | [View Tx Link](https://stellar.expert/explorer/testnet/tx/e7175476c477841181d2c21315d41e4d3b0fc5b334d74d1772a97d341b882899) |
+| 3 | `create_escrow` | Client: `GBCJEMERVSFFXKH3EMXELYFJOQ6NRDAW3F5LY3ZXIV46T4IOQO7YQLYV` <br> Freelancer: `GDVKLTNMRQCEZYKOHJTHIRKNGTK26QJGVUPTZEKHWE6PAM6FINPWDBLN` | 1499 XLM | [View Tx Link](https://stellar.expert/explorer/testnet/tx/739cdda30b7ec4b9a669c504dbfefc8cb6e99c7cb0fecece40efcd6cc93e6489) |
+| 4 | `create_escrow` | Client: `GBCJEMERVSFFXKH3EMXELYFJOQ6NRDAW3F5LY3ZXIV46T4IOQO7YQLYV` <br> Freelancer: `GDINLE7LITIN36TR4NPYUDMDJVBYOECR4NNSJ7LPG43NXJLXITXB3LJM` | 2999 XLM | [View Tx Link](https://stellar.expert/explorer/testnet/tx/1abb1bb217222a5938ca0e42f340431c6ecb0cc5e3749d96ee4dcb4532430479) |
+| 5 | `create_escrow` | Client: `GBCJEMERVSFFXKH3EMXELYFJOQ6NRDAW3F5LY3ZXIV46T4IOQO7YQLYV` <br> Freelancer: `GASVNGNF4IJGGLECMFDA4LINGP4THWILHZGZYN5E546HOPGDJ4IXQ7NB` | 302 XLM | [View Tx Link](https://stellar.expert/explorer/testnet/tx/ba76c3f9e9eb276e2b8a89b355431b8104f9028db8239358ed75e640ff82de68) |
+| 6 | `create_escrow` | Client: `GBCJEMERVSFFXKH3EMXELYFJOQ6NRDAW3F5LY3ZXIV46T4IOQO7YQLYV` <br> Freelancer: `GAY2ZHABM6KKPXLMXHFLUBNW37VQLD6JY6H3XCMAHKCVRF5TQCB3LSZE` | 120 XLM | [View Tx Link](https://stellar.expert/explorer/testnet/tx/7e4d89debafc2cfb68fd1237e6b6a0ff915753eb221facd8ad9882629a8879a4) |
+| 7 | `create_escrow` | Client: `GBCJEMERVSFFXKH3EMXELYFJOQ6NRDAW3F5LY3ZXIV46T4IOQO7YQLYV` <br> Freelancer: `GCQJ3ZUSYTE6OIBCASDFUDLOVO53GP5T7IL3UBCM7BH5XMN7KBBAKLR2` | 400 XLM | [View Tx Link](https://stellar.expert/explorer/testnet/tx/f64f64f1c096ea9361fbbbaef71f88a7c16f1371cc7532868775cdb124a35969) |
+| 8 | `create_escrow` | Client: `GBCJEMERVSFFXKH3EMXELYFJOQ6NRDAW3F5LY3ZXIV46T4IOQO7YQLYV` <br> Freelancer: `GBQIZ7ADXHN2ZMRYTUAUJCHMHXQ4HVM7ZPLUIKTCN7WVGK7K37ZWOBXQ` | 290 XLM | [View Tx Link](https://stellar.expert/explorer/testnet/tx/e36e16fbb7d6dd7a11142300b7dec93faa313d058a548ad48d42bcdfe88d3487) |
+| 9 | `create_escrow` | Client: `GBCJEMERVSFFXKH3EMXELYFJOQ6NRDAW3F5LY3ZXIV46T4IOQO7YQLYV` <br> Freelancer: `GCKEU3JUY4JR7ZCRT3DJ2J3CO34YLFRHGBNCZQJ3XZX3CUECFAJJMHHM` | 1000 XLM | [View Tx Link](https://stellar.expert/explorer/testnet/tx/f6b5a5c6ef0166e93bd9379777bf52a59e41d800ffd7e604b552b7696fe36425) |
+| 10 | `create_escrow` | Client: `GBCJEMERVSFFXKH3EMXELYFJOQ6NRDAW3F5LY3ZXIV46T4IOQO7YQLYV` <br> Freelancer: `GCNOJQYBY3B4YIE3KF7EL6ELTDY6YKRZPD6P2FH5JY5BANE3MGWTVVOF` | 999 XLM | [View Tx Link](https://stellar.expert/explorer/testnet/tx/5df9afeff242818d2491ce398df9f156a4edffcebdfaef5bc3f11ca3a7479704) |

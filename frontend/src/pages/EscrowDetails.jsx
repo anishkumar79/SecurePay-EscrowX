@@ -32,33 +32,64 @@ export default function EscrowDetails() {
     setLoading(true);
     setError(null);
     try {
-      // 1. Fetch from Supabase metadata
-      const { data, error: dbError } = await supabase
-        .from('escrows')
-        .select('*')
-        .eq('id', Number(id))
-        .single();
-
-      if (dbError) throw dbError;
-
-      // 2. Fetch on-chain status to verify correctness
+      let escrowData = null;
+      
+      // 1. Try to fetch from Supabase metadata
       try {
-        const onChainData = await getEscrowDetails(Number(id));
-        if (onChainData) {
-          // If database is out of sync, update status on DB
-          if (Number(onChainData.status) !== Number(data.status)) {
-            await supabase
-              .from('escrows')
-              .update({ status: Number(onChainData.status) })
-              .eq('id', Number(id));
-            data.status = Number(onChainData.status);
-          }
+        const { data, error: dbError } = await supabase
+          .from('escrows')
+          .select('*')
+          .eq('id', Number(id))
+          .single();
+        if (!dbError && data) {
+          escrowData = data;
         }
-      } catch (chainErr) {
-        console.warn('Could not fetch on-chain state, using DB metadata:', chainErr);
+      } catch (dbErr) {
+        console.warn('DB fetch failed, trying on-chain fallback:', dbErr);
       }
 
-      setEscrow(data);
+      // 2. Fetch on-chain status
+      const onChainData = await getEscrowDetails(Number(id));
+      
+      if (!onChainData) {
+        // If not found on-chain, and we couldn't get it from DB, it doesn't exist
+        if (!escrowData) {
+          throw new Error('Agreement not found on-chain or in database.');
+        }
+      } else {
+        // If found on-chain
+        if (escrowData) {
+          // Sync database status if out of sync
+          if (Number(onChainData.status) !== Number(escrowData.status)) {
+            try {
+              await supabase
+                .from('escrows')
+                .update({ status: Number(onChainData.status) })
+                .eq('id', Number(id));
+            } catch (syncErr) {
+              console.warn('Could not sync status to DB:', syncErr);
+            }
+            escrowData.status = Number(onChainData.status);
+          }
+        } else {
+          // DB metadata is missing (e.g. friend loaded a link created by user under localStorage)
+          // Construct fallback metadata from on-chain data
+          escrowData = {
+            id: Number(id),
+            title: `Escrow Agreement #${id}`,
+            description: `This agreement's details are loaded directly from the Stellar blockchain. The original creator has the deliverables details stored in their local browser.`,
+            amount: Number(onChainData.amount) / 10000000,
+            client_address: onChainData.client,
+            freelancer_address: onChainData.freelancer,
+            token_address: onChainData.token,
+            release_time: Number(onChainData.release_time),
+            status: Number(onChainData.status),
+            tx_hash: null
+          };
+        }
+      }
+
+      setEscrow(escrowData);
     } catch (err) {
       console.error(err);
       setError('Failed to load escrow details. Verify if the agreement exists.');
@@ -137,8 +168,8 @@ export default function EscrowDetails() {
 
   const { title, description, amount, status, client_address, freelancer_address, release_time, tx_hash } = escrow;
 
-  const isClient = address.toLowerCase() === client_address.toLowerCase();
-  const isFreelancer = address.toLowerCase() === freelancer_address.toLowerCase();
+  const isClient = address && client_address && address.toLowerCase() === client_address.toLowerCase();
+  const isFreelancer = address && freelancer_address && address.toLowerCase() === freelancer_address.toLowerCase();
   const releaseDate = new Date(Number(release_time) * 1000);
   const now = new Date();
   const isExpired = now >= releaseDate;

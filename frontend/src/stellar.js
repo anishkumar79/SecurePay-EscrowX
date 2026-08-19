@@ -1,8 +1,5 @@
-import {
-  StellarWalletsKit,
-  WalletNetwork,
-  allowAllModules
-} from '@creit.tech/stellar-wallets-kit';
+import { StellarWalletsKit, Networks } from '@creit.tech/stellar-wallets-kit';
+import { FreighterModule } from '@creit.tech/stellar-wallets-kit/modules/freighter';
 import posthog from 'posthog-js';
 import {
   Address,
@@ -10,21 +7,23 @@ import {
   scValToNative,
   xdr,
   TransactionBuilder,
-  Networks,
+  Networks as SDKNetworks,
   BASE_FEE,
-  rpc
+  rpc,
+  Operation
 } from '@stellar/stellar-sdk';
 
 const NETWORK = import.meta.env.VITE_STELLAR_NETWORK || 'testnet';
 const RPC_URL = import.meta.env.VITE_SOROBAN_RPC_URL || 'https://soroban-testnet.stellar.org:443';
-export const CONTRACT_ADDRESS = import.meta.env.VITE_CONTRACT_ADDRESS || '';
+export const CONTRACT_ADDRESS = import.meta.env.VITE_CONTRACT_ADDRESS || 'CBGL7N5GANUBPAV2UHXC5UBW3JSXGNLAKOMVJD54YNIZF6WN6PHSMQAL';
 
 export const server = new rpc.Server(RPC_URL);
 
-export const kit = new StellarWalletsKit({
-  network: WalletNetwork.TESTNET,
+// Initialize static kit
+StellarWalletsKit.init({
+  network: Networks.TESTNET,
   selectedWalletId: 'freighter',
-  modules: allowAllModules(),
+  modules: [new FreighterModule()],
 });
 
 // Cache connected wallet address
@@ -32,7 +31,7 @@ let connectedAddress = null;
 
 export async function connectWallet() {
   try {
-    const { address } = await kit.connect();
+    const { address } = await StellarWalletsKit.authModal();
     connectedAddress = address;
     try {
       posthog.identify(address);
@@ -53,6 +52,7 @@ export function getConnectedAddress() {
 
 export function disconnectWallet() {
   connectedAddress = null;
+  StellarWalletsKit.disconnect();
 }
 
 /**
@@ -75,30 +75,28 @@ export async function invokeContract(functionName, args = [], signTx = true) {
   // Build the Soroban transaction
   let tx = new TransactionBuilder(sourceAccount, {
     fee: BASE_FEE,
-    networkPassphrase: Networks.TESTNET,
+    networkPassphrase: SDKNetworks.TESTNET,
   })
     .addOperation(
-      TransactionBuilder.cloneOperation(
-        TransactionBuilder.buildInvokeContractOperation({
-          contractId: CONTRACT_ADDRESS,
-          function: functionName,
-          args: args.map(arg => {
-            // Encode custom objects or types if needed
-            if (arg && typeof arg === 'object' && arg._type) {
-              if (arg._type === 'address') {
-                return Address.fromString(arg.val).toScVal();
-              }
-              if (arg._type === 'i128') {
-                return nativeToScVal(BigInt(arg.val), { type: 'i128' });
-              }
-              if (arg._type === 'u64') {
-                return nativeToScVal(BigInt(arg.val), { type: 'u64' });
-              }
+      Operation.invokeContractFunction({
+        contract: CONTRACT_ADDRESS,
+        function: functionName,
+        args: args.map(arg => {
+          // Encode custom objects or types if needed
+          if (arg && typeof arg === 'object' && arg._type) {
+            if (arg._type === 'address') {
+              return Address.fromString(arg.val).toScVal();
             }
-            return nativeToScVal(arg);
-          }),
-        })
-      )
+            if (arg._type === 'i128') {
+              return nativeToScVal(BigInt(arg.val), { type: 'i128' });
+            }
+            if (arg._type === 'u64') {
+              return nativeToScVal(BigInt(arg.val), { type: 'u64' });
+            }
+          }
+          return nativeToScVal(arg);
+        }),
+      })
     )
     .setTimeout(60)
     .build();
@@ -118,13 +116,13 @@ export async function invokeContract(functionName, args = [], signTx = true) {
     return scValToNative(resultScVal);
   }
 
-  // Sign transaction
-  const { signedTxXdr } = await kit.sign({
-    xdr: tx.toXDR(),
-    network: 'TESTNET',
+  // Sign transaction using static signTransaction method
+  const { signedTxXdr } = await StellarWalletsKit.signTransaction(tx.toXDR(), {
+    networkPassphrase: SDKNetworks.TESTNET,
+    address,
   });
 
-  const signedTx = TransactionBuilder.fromXDR(signedTxXdr, Networks.TESTNET);
+  const signedTx = TransactionBuilder.fromXDR(signedTxXdr, SDKNetworks.TESTNET);
 
   // Submit transaction
   const submission = await server.sendTransaction(signedTx);
@@ -136,26 +134,19 @@ export async function invokeContract(functionName, args = [], signTx = true) {
   let response = await server.getTransaction(submission.hash);
   for (let i = 0; i < 30; i++) {
     if (response.status === 'SUCCESS') {
-      const txResult = xdr.TransactionResult.fromXDR(Buffer.from(response.resultXdr, 'base64'));
-      const results = txResult.result().results();
-      if (results.length > 0) {
-        const scVal = results[0].tr().invokeHostFunctionResult().success();
-        const localScVal = xdr.ScVal.fromXDR(scVal.toXDR('base64'), 'base64');
-        try {
-          posthog.capture('contract_transaction_success', {
-            function_name: functionName,
-            tx_hash: submission.hash,
-            wallet: address
-          });
-        } catch (e) {
-          console.warn('PostHog tracking failed:', e);
-        }
-        return {
-          hash: submission.hash,
-          result: scValToNative(localScVal),
-        };
+      try {
+        posthog.capture('contract_transaction_success', {
+          function_name: functionName,
+          tx_hash: submission.hash,
+          wallet: address
+        });
+      } catch (e) {
+        console.warn('PostHog tracking failed:', e);
       }
-      return { hash: submission.hash };
+      return {
+        hash: submission.hash,
+        result: response.returnValue ? scValToNative(response.returnValue) : null,
+      };
     } else if (response.status === 'FAILED') {
       throw new Error(`Transaction execution failed: ${JSON.stringify(response)}`);
     }
