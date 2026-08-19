@@ -1,0 +1,106 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  # 1. CI Validation for Smart Contract
+  ci-contract:
+    name: Build and Test Smart Contract
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: wasm32v1-none, wasm32-unknown-unknown
+
+      - name: Run smart contract tests
+        run: |
+          cd contract
+          cargo test
+
+      - name: Build smart contract (WASM)
+        run: |
+          cd contract
+          cargo build --target wasm32v1-none --release
+
+      - name: Upload compiled contract WASM as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: escrowx_contract.wasm
+          path: contract/target/wasm32v1-none/release/escrowx_contract.wasm
+
+  # 2. CI Validation for Frontend
+  ci-frontend:
+    name: Build and Lint Frontend
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: 'npm'
+          cache-dependency-path: frontend/package-lock.json
+
+      - name: Install dependencies
+        run: |
+          cd frontend
+          npm ci
+
+      - name: Build frontend
+        run: |
+          cd frontend
+          npm run build
+
+  # 3. CD Validation for Smart Contract and Frontend (Deployment)
+  cd-deploy:
+    name: Continuous Deployment
+    needs: [ci-contract, ci-frontend]
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Download compiled contract WASM
+        uses: actions/download-artifact@v4
+        with:
+          name: escrowx_contract.wasm
+          path: contract/target/wasm32v1-none/release
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Install Frontend Dependencies
+        run: |
+          cd frontend
+          npm ci
+
+      # Deploy Smart Contract to Stellar Testnet (optional dry-run/automatic deploy in CD)
+      - name: Dry-run Smart Contract Deployment to Testnet
+        run: |
+          cd frontend
+          node deploy.js
+        env:
+          NODE_ENV: production
+
+      # Deploy Frontend to Vercel
+      - name: Deploy Frontend to Vercel
+        uses: amondnet/vercel-action@v20
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+          vercel-args: '--prod'
+          working-directory: ./frontend

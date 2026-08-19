@@ -10,12 +10,14 @@ import {
   Networks as SDKNetworks,
   BASE_FEE,
   rpc,
-  Operation
+  Operation,
+  Contract
 } from '@stellar/stellar-sdk';
 
 const NETWORK = import.meta.env.VITE_STELLAR_NETWORK || 'testnet';
 const RPC_URL = import.meta.env.VITE_SOROBAN_RPC_URL || 'https://soroban-testnet.stellar.org:443';
 export const CONTRACT_ADDRESS = import.meta.env.VITE_CONTRACT_ADDRESS || 'CBGL7N5GANUBPAV2UHXC5UBW3JSXGNLAKOMVJD54YNIZF6WN6PHSMQAL';
+export const contract = new Contract(CONTRACT_ADDRESS);
 
 export const server = new rpc.Server(RPC_URL);
 
