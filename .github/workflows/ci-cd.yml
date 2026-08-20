@@ -47,7 +47,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 22
           cache: 'npm'
           cache-dependency-path: frontend/package-lock.json
 
@@ -80,20 +80,21 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 22
 
       - name: Install Frontend Dependencies
         run: |
           cd frontend
           npm ci
 
-      # Deploy Smart Contract to Stellar Testnet (optional dry-run/automatic deploy in CD)
-      - name: Dry-run Smart Contract Deployment to Testnet
+      - name: Build Frontend for Production
         run: |
           cd frontend
-          node deploy.js
+          npm run build
         env:
-          NODE_ENV: production
+          VITE_STELLAR_NETWORK: testnet
+          VITE_SOROBAN_RPC_URL: https://soroban-testnet.stellar.org:443
+          VITE_CONTRACT_ADDRESS: CBGL7N5GANUBPAV2UHXC5UBW3JSXGNLAKOMVJD54YNIZF6WN6PHSMQAL
 
       # Deploy Frontend to Vercel
       - name: Deploy Frontend to Vercel
