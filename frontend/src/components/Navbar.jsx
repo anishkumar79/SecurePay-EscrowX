@@ -47,19 +47,19 @@ export default function Navbar() {
   return (
     <nav className="glass sticky top-0 z-50 w-full px-6 py-4 flex items-center justify-between border-b border-white/5 backdrop-blur-md">
       <div className="flex items-center gap-3">
-        <div className="bg-gradient-to-tr from-purple-500 to-indigo-500 p-2 rounded-xl text-white shadow-md shadow-purple-500/20">
+        <div className="bg-gradient-to-tr from-teal-400 to-emerald-500 p-2 rounded-xl text-white shadow-md shadow-teal-500/20">
           <Shield size={24} />
         </div>
         <Link to="/" className="text-2xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white via-slate-200 to-slate-400">
-          Escrow<span className="text-purple-400">X</span>
+          Escrow<span className="text-teal-400">X</span>
         </Link>
       </div>
 
       <div className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
-        <Link to="/" className={`transition-colors duration-200 hover:text-white ${isActive('/') ? 'text-purple-400' : ''}`}>Home</Link>
-        <Link to="/dashboard" className={`transition-colors duration-200 hover:text-white ${isActive('/dashboard') ? 'text-purple-400' : ''}`}>Dashboard</Link>
-        <Link to="/create" className={`transition-colors duration-200 hover:text-white ${isActive('/create') ? 'text-purple-400' : ''}`}>New Escrow</Link>
-        <Link to="/feedback" className={`transition-colors duration-200 hover:text-white ${isActive('/feedback') ? 'text-purple-400' : ''}`}>Feedback</Link>
+        <Link to="/" className={`transition-colors duration-200 hover:text-white ${isActive('/') ? 'text-teal-400' : ''}`}>Home</Link>
+        <Link to="/dashboard" className={`transition-colors duration-200 hover:text-white ${isActive('/dashboard') ? 'text-teal-400' : ''}`}>Dashboard</Link>
+        <Link to="/create" className={`transition-colors duration-200 hover:text-white ${isActive('/create') ? 'text-teal-400' : ''}`}>New Escrow</Link>
+        <Link to="/feedback" className={`transition-colors duration-200 hover:text-white ${isActive('/feedback') ? 'text-teal-400' : ''}`}>Feedback</Link>
       </div>
 
       <div className="flex items-center gap-3">

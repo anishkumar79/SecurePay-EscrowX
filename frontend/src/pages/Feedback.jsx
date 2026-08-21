@@ -77,10 +77,10 @@ export default function Feedback() {
     <div className="max-w-4xl w-full mx-auto px-6 py-10 grid grid-cols-1 md:grid-cols-2 gap-8">
       {/* Left panel: Submission Form */}
       <div className="glass-card rounded-3xl p-8 border border-white/5 relative overflow-hidden h-fit">
-        <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-purple-500 via-indigo-500 to-pink-500"></div>
+        <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-teal-500 via-emerald-500 to-cyan-500"></div>
 
         <div className="flex items-center gap-3 mb-6">
-          <div className="bg-purple-500/15 p-2 rounded-xl text-purple-400">
+          <div className="bg-teal-500/15 p-2 rounded-xl text-teal-400">
             <MessageSquarePlus size={20} />
           </div>
           <h2 className="text-2xl font-bold text-slate-100">User Validation</h2>
@@ -130,7 +130,7 @@ export default function Feedback() {
               placeholder="How was your experience? Do payments execute quickly on testnet? Any bugs?"
               value={comments}
               onChange={(e) => setComments(e.target.value)}
-              className="w-full bg-slate-900 border border-white/5 rounded-xl px-4 py-3 text-slate-100 focus:outline-none focus:border-purple-500 transition duration-200 text-sm"
+              className="w-full bg-slate-900 border border-white/5 rounded-xl px-4 py-3 text-slate-100 focus:outline-none focus:border-teal-500 transition duration-200 text-sm"
             />
           </div>
 
@@ -155,7 +155,7 @@ export default function Feedback() {
       <div className="space-y-6">
         <div className="glass-card rounded-3xl p-6 border border-white/5 space-y-6">
           <h3 className="text-sm font-bold text-slate-100 flex items-center gap-2">
-            <Trophy size={16} className="text-purple-400" />
+            <Trophy size={16} className="text-teal-400" />
             Validation Overview
           </h3>
 
@@ -168,7 +168,7 @@ export default function Feedback() {
             </div>
             <div className="bg-slate-900/40 p-4 rounded-2xl border border-white/5 text-center">
               <span className="text-xs text-slate-500 font-bold block uppercase tracking-wider">Users Onboarded</span>
-              <span className="text-4xl font-extrabold text-purple-400 block mt-2">
+              <span className="text-4xl font-extrabold text-teal-400 block mt-2">
                 {feedbacks.length}
               </span>
             </div>
@@ -178,13 +178,13 @@ export default function Feedback() {
         {/* Validation entries */}
         <div className="glass-card rounded-3xl p-6 border border-white/5 space-y-4 max-h-[350px] overflow-y-auto">
           <h3 className="text-sm font-bold text-slate-100 flex items-center gap-2">
-            <Award size={16} className="text-purple-400" />
+            <Award size={16} className="text-teal-400" />
             Validation Feed
           </h3>
 
           {loading ? (
             <div className="text-center py-8">
-              <Loader2 className="animate-spin text-purple-500 mx-auto" size={24} />
+              <Loader2 className="animate-spin text-teal-500 mx-auto" size={24} />
             </div>
           ) : feedbacks.length === 0 ? (
             <p className="text-xs text-slate-400 text-center py-8">No feedback submitted yet.</p>

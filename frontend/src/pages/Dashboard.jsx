@@ -52,7 +52,7 @@ export default function Dashboard() {
     return (
       <div className="flex flex-col items-center justify-center min-h-[60vh] text-center px-4">
         <div className="bg-slate-900 border border-white/5 p-8 rounded-3xl max-w-md w-full shadow-xl">
-          <Wallet className="mx-auto text-purple-400 mb-4 animate-bounce" size={48} />
+          <Wallet className="mx-auto text-teal-400 mb-4 animate-bounce" size={48} />
           <h2 className="text-xl font-bold text-slate-100 mb-2">Connect Your Wallet</h2>
           <p className="text-slate-400 text-sm mb-6 leading-relaxed">
             Please connect your Freighter wallet using the button in the navigation bar to access your EscrowX dashboard.
@@ -101,7 +101,7 @@ export default function Dashboard() {
         </div>
         <Link
           to="/create"
-          className="gradient-btn flex items-center gap-2 px-5 py-3 rounded-xl text-sm font-semibold cursor-pointer shadow-md shadow-purple-500/10"
+          className="gradient-btn flex items-center gap-2 px-5 py-3 rounded-xl text-sm font-semibold cursor-pointer shadow-md shadow-teal-500/10"
         >
           <Plus size={16} />
           <span>New Agreement</span>
@@ -111,7 +111,7 @@ export default function Dashboard() {
       {/* Stats Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
         <div className="glass-card p-6 rounded-2xl border border-white/5 flex items-center gap-4">
-          <div className="bg-purple-500/10 p-3.5 rounded-xl text-purple-400">
+          <div className="bg-teal-500/10 p-3.5 rounded-xl text-teal-400">
             <CircleDollarSign size={24} />
           </div>
           <div>
@@ -143,19 +143,19 @@ export default function Dashboard() {
       <div className="flex border-b border-white/5 gap-6 text-sm font-semibold">
         <button
           onClick={() => setRoleFilter('all')}
-          className={`pb-4 transition-all duration-200 border-b-2 cursor-pointer ${roleFilter === 'all' ? 'border-purple-500 text-purple-400' : 'border-transparent text-slate-400 hover:text-slate-200'}`}
+          className={`pb-4 transition-all duration-200 border-b-2 cursor-pointer ${roleFilter === 'all' ? 'border-teal-500 text-teal-400' : 'border-transparent text-slate-400 hover:text-slate-200'}`}
         >
           All Agreements
         </button>
         <button
           onClick={() => setRoleFilter('client')}
-          className={`pb-4 transition-all duration-200 border-b-2 cursor-pointer ${roleFilter === 'client' ? 'border-purple-500 text-purple-400' : 'border-transparent text-slate-400 hover:text-slate-200'}`}
+          className={`pb-4 transition-all duration-200 border-b-2 cursor-pointer ${roleFilter === 'client' ? 'border-teal-500 text-teal-400' : 'border-transparent text-slate-400 hover:text-slate-200'}`}
         >
           As Client
         </button>
         <button
           onClick={() => setRoleFilter('freelancer')}
-          className={`pb-4 transition-all duration-200 border-b-2 cursor-pointer ${roleFilter === 'freelancer' ? 'border-purple-500 text-purple-400' : 'border-transparent text-slate-400 hover:text-slate-200'}`}
+          className={`pb-4 transition-all duration-200 border-b-2 cursor-pointer ${roleFilter === 'freelancer' ? 'border-teal-500 text-teal-400' : 'border-transparent text-slate-400 hover:text-slate-200'}`}
         >
           As Freelancer
         </button>

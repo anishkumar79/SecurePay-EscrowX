@@ -26,27 +26,27 @@
 
 .glass-card:hover {
   background: rgba(30, 41, 59, 0.45);
-  border-color: rgba(168, 85, 247, 0.2);
+  border-color: rgba(45, 212, 191, 0.2);
   transform: translateY(-2px);
-  box-shadow: 0 12px 20px -8px rgba(168, 85, 247, 0.15);
+  box-shadow: 0 12px 20px -8px rgba(45, 212, 191, 0.15);
 }
 
 .gradient-text {
-  background: linear-gradient(135deg, #c084fc 0%, #f472b6 50%, #818cf8 100%);
+  background: linear-gradient(135deg, #2dd4bf 0%, #22d3ee 50%, #10b981 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .gradient-btn {
-  background: linear-gradient(135deg, #a855f7 0%, #6366f1 100%);
-  box-shadow: 0 4px 14px 0 rgba(168, 85, 247, 0.3);
+  background: linear-gradient(135deg, #2dd4bf 0%, #10b981 100%);
+  box-shadow: 0 4px 14px 0 rgba(45, 212, 191, 0.3);
   transition: all 0.3s ease;
 }
 
 .gradient-btn:hover:not(:disabled) {
   transform: translateY(-1px);
-  box-shadow: 0 6px 20px 0 rgba(168, 85, 247, 0.45);
+  box-shadow: 0 6px 20px 0 rgba(45, 212, 191, 0.45);
   filter: brightness(1.1);
 }
 

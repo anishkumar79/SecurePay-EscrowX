@@ -24,11 +24,11 @@ export default function Landing() {
   return (
     <div className="relative min-h-[calc(100vh-73px)] flex flex-col justify-center items-center px-6 py-12 overflow-hidden bg-[#030712]">
       {/* Background glow effects */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-purple-500/10 rounded-full blur-[120px] animate-pulse-slow pointer-events-none"></div>
-      <div className="absolute bottom-10 left-1/4 w-[300px] h-[300px] bg-indigo-500/10 rounded-full blur-[100px] pointer-events-none"></div>
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-teal-500/10 rounded-full blur-[120px] animate-pulse-slow pointer-events-none"></div>
+      <div className="absolute bottom-10 left-1/4 w-[300px] h-[300px] bg-emerald-500/10 rounded-full blur-[100px] pointer-events-none"></div>
 
       <div className="max-w-4xl text-center relative z-10 space-y-8">
-        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-purple-500/20 bg-purple-500/5 text-purple-300 text-xs font-semibold uppercase tracking-wider">
+        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-teal-500/20 bg-teal-500/5 text-teal-300 text-xs font-semibold uppercase tracking-wider">
           <Zap size={14} /> Built on Stellar Network & Soroban Contracts
         </div>
 
@@ -71,7 +71,7 @@ export default function Landing() {
       {/* Feature Section */}
       <div className="grid md:grid-cols-3 gap-8 max-w-5xl w-full mt-24 relative z-10">
         <div className="glass-card p-8 rounded-2xl border border-white/5 space-y-4">
-          <div className="w-12 h-12 bg-purple-500/10 border border-purple-500/20 text-purple-400 flex items-center justify-center rounded-xl">
+          <div className="w-12 h-12 bg-teal-500/10 border border-teal-500/20 text-teal-400 flex items-center justify-center rounded-xl">
             <Shield size={22} />
           </div>
           <h3 className="text-lg font-bold text-slate-100">Tamper-Proof Protection</h3>
@@ -81,7 +81,7 @@ export default function Landing() {
         </div>
 
         <div className="glass-card p-8 rounded-2xl border border-white/5 space-y-4">
-          <div className="w-12 h-12 bg-blue-500/10 border border-blue-500/20 text-blue-400 flex items-center justify-center rounded-xl">
+          <div className="w-12 h-12 bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 flex items-center justify-center rounded-xl">
             <Coins size={22} />
           </div>
           <h3 className="text-lg font-bold text-slate-100">Ultralow Network Fees</h3>

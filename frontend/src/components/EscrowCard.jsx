@@ -11,7 +11,7 @@ export default function EscrowCard({ escrow }) {
       case 1:
         return { label: 'Deposited', color: 'text-blue-400 bg-blue-400/10 border-blue-500/20' };
       case 2:
-        return { label: 'Release Requested', color: 'text-purple-400 bg-purple-400/10 border-purple-500/20' };
+        return { label: 'Release Requested', color: 'text-teal-400 bg-teal-400/10 border-teal-500/20' };
       case 3:
         return { label: 'Released', color: 'text-emerald-400 bg-emerald-400/10 border-emerald-500/20' };
       case 4:
@@ -38,7 +38,7 @@ export default function EscrowCard({ escrow }) {
             {statusInfo.label}
           </span>
           <span className="text-xl font-bold text-slate-100">
-            {amount} <span className="text-purple-400 text-sm font-semibold">XLM</span>
+            {amount} <span className="text-teal-400 text-sm font-semibold">XLM</span>
           </span>
         </div>
 
@@ -77,7 +77,7 @@ export default function EscrowCard({ escrow }) {
       <div className="mt-6">
         <Link
           to={`/escrow/${id}`}
-          className="w-full flex items-center justify-center gap-2 bg-slate-900 hover:bg-slate-800 border border-white/5 hover:border-purple-500/30 text-slate-200 hover:text-white py-3 rounded-xl text-sm font-medium transition-all duration-300"
+          className="w-full flex items-center justify-center gap-2 bg-slate-900 hover:bg-slate-800 border border-white/5 hover:border-teal-500/30 text-slate-200 hover:text-white py-3 rounded-xl text-sm font-medium transition-all duration-300"
         >
           <span>Manage Agreement</span>
           <ArrowRight size={14} />

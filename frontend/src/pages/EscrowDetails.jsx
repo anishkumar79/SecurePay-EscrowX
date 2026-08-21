@@ -147,7 +147,7 @@ export default function EscrowDetails() {
   if (loading) {
     return (
       <div className="flex flex-col items-center justify-center min-h-[60vh] text-center">
-        <Loader2 className="animate-spin text-purple-500 mb-4" size={36} />
+        <Loader2 className="animate-spin text-teal-500 mb-4" size={36} />
         <p className="text-slate-400 text-sm">Verifying escrow status on Stellar ledger...</p>
       </div>
     );
@@ -197,7 +197,7 @@ export default function EscrowDetails() {
         {/* Left column: Escrow main details and actions */}
         <div className="md:col-span-2 space-y-6">
           <div className="glass-card rounded-3xl p-8 border border-white/5 space-y-6 relative overflow-hidden">
-            <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-purple-500 to-indigo-500"></div>
+            <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-teal-500 to-emerald-500"></div>
 
             <div className="flex justify-between items-start gap-4">
               <div>
@@ -206,7 +206,7 @@ export default function EscrowDetails() {
               </div>
               <div className="text-right">
                 <span className="text-xs text-slate-500 font-bold block uppercase tracking-wider">Amount</span>
-                <span className="text-2xl sm:text-3xl font-black text-purple-400">{amount} XLM</span>
+                <span className="text-2xl sm:text-3xl font-black text-teal-400">{amount} XLM</span>
               </div>
             </div>
 
@@ -224,20 +224,20 @@ export default function EscrowDetails() {
                   <User size={12} /> Client Wallet
                 </span>
                 <span className="text-xs font-mono text-slate-300 break-all">{client_address}</span>
-                {isClient && <span className="text-[10px] text-purple-400 font-bold uppercase block">(You)</span>}
+                {isClient && <span className="text-[10px] text-teal-400 font-bold uppercase block">(You)</span>}
               </div>
               <div className="space-y-1">
                 <span className="flex items-center gap-1.5 text-xs text-slate-500 font-bold uppercase tracking-wider">
                   <User size={12} /> Freelancer Wallet
                 </span>
                 <span className="text-xs font-mono text-slate-300 break-all">{freelancer_address}</span>
-                {isFreelancer && <span className="text-[10px] text-purple-400 font-bold uppercase block">(You)</span>}
+                {isFreelancer && <span className="text-[10px] text-teal-400 font-bold uppercase block">(You)</span>}
               </div>
             </div>
 
             {/* Release Date Info */}
             <div className="flex items-center gap-2 text-xs text-slate-400 bg-slate-900/40 border border-white/5 p-3.5 rounded-xl">
-              <Calendar size={14} className="text-purple-400" />
+              <Calendar size={14} className="text-teal-400" />
               <span>Release Expiry Deadline: <strong>{releaseDate.toLocaleString()}</strong> ({isExpired ? 'Passed' : 'Active'})</span>
             </div>
 
@@ -323,7 +323,7 @@ export default function EscrowDetails() {
         <div className="space-y-6">
           <div className="glass-card rounded-3xl p-6 border border-white/5 space-y-6">
             <h3 className="text-sm font-bold text-slate-100 flex items-center gap-2">
-              <Clock size={16} className="text-purple-400" />
+              <Clock size={16} className="text-teal-400" />
               Progress Tracker
             </h3>
 
@@ -339,12 +339,12 @@ export default function EscrowDetails() {
                       isCompleted 
                         ? 'bg-emerald-500 border-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.5)]' 
                         : isActive 
-                        ? 'bg-purple-500 border-purple-500 shadow-[0_0_8px_rgba(168,85,247,0.5)]'
+                        ? 'bg-teal-500 border-teal-500 shadow-[0_0_8px_rgba(168,85,247,0.5)]'
                         : 'bg-slate-950 border-slate-800'
                     }`}></div>
 
                     <div className="space-y-0.5">
-                      <h4 className={`text-sm font-bold ${isActive ? 'text-purple-400' : isCompleted ? 'text-emerald-400' : 'text-slate-500'}`}>
+                      <h4 className={`text-sm font-bold ${isActive ? 'text-teal-400' : isCompleted ? 'text-emerald-400' : 'text-slate-500'}`}>
                         {step.label}
                       </h4>
                       <p className="text-xs text-slate-400">{step.desc}</p>
@@ -359,7 +359,7 @@ export default function EscrowDetails() {
           {tx_hash && (
             <div className="glass-card rounded-3xl p-6 border border-white/5 space-y-4">
               <h3 className="text-sm font-bold text-slate-100 flex items-center gap-2">
-                <Shield size={16} className="text-purple-400" />
+                <Shield size={16} className="text-teal-400" />
                 Ledger Settlement
               </h3>
               <p className="text-xs text-slate-400">This escrow is verified on Stellar Testnet. View the latest transaction on the block explorer.</p>
@@ -367,7 +367,7 @@ export default function EscrowDetails() {
                 href={`https://stellar.expert/explorer/testnet/tx/${tx_hash}`}
                 target="_blank"
                 rel="noreferrer"
-                className="w-full flex items-center justify-center gap-2 bg-slate-900/60 hover:bg-slate-900 border border-white/5 hover:border-purple-500/20 text-xs font-semibold py-3 rounded-xl transition duration-200 text-purple-400"
+                className="w-full flex items-center justify-center gap-2 bg-slate-900/60 hover:bg-slate-900 border border-white/5 hover:border-teal-500/20 text-xs font-semibold py-3 rounded-xl transition duration-200 text-teal-400"
               >
                 <span>StellarExpert Explorer</span>
                 <ExternalLink size={12} />

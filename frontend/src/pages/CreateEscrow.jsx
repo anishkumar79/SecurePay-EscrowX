@@ -113,10 +113,10 @@ export default function CreateEscrow() {
 
       <div className="glass-card rounded-3xl p-8 border border-white/5 relative overflow-hidden">
         {/* Top styling accent */}
-        <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-purple-500 via-indigo-500 to-pink-500"></div>
+        <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-teal-500 via-emerald-500 to-cyan-500"></div>
 
         <div className="flex items-center gap-3 mb-6">
-          <div className="bg-purple-500/15 p-2 rounded-xl text-purple-400">
+          <div className="bg-teal-500/15 p-2 rounded-xl text-teal-400">
             <Sparkles size={20} />
           </div>
           <h2 className="text-2xl font-bold text-slate-100">Create Escrow Agreement</h2>
@@ -132,7 +132,7 @@ export default function CreateEscrow() {
               placeholder="e.g. Redesign Landing Page Website"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
-              className="w-full bg-slate-900 border border-white/5 rounded-xl px-4 py-3 text-slate-100 focus:outline-none focus:border-purple-500 transition duration-200 text-sm"
+              className="w-full bg-slate-900 border border-white/5 rounded-xl px-4 py-3 text-slate-100 focus:outline-none focus:border-teal-500 transition duration-200 text-sm"
             />
           </div>
 
@@ -145,7 +145,7 @@ export default function CreateEscrow() {
               placeholder="Specify requirements, milestones, and expected outputs..."
               value={description}
               onChange={(e) => setDescription(e.target.value)}
-              className="w-full bg-slate-900 border border-white/5 rounded-xl px-4 py-3 text-slate-100 focus:outline-none focus:border-purple-500 transition duration-200 text-sm"
+              className="w-full bg-slate-900 border border-white/5 rounded-xl px-4 py-3 text-slate-100 focus:outline-none focus:border-teal-500 transition duration-200 text-sm"
             />
           </div>
 
@@ -159,7 +159,7 @@ export default function CreateEscrow() {
                 placeholder="G..."
                 value={freelancer}
                 onChange={(e) => setFreelancer(e.target.value)}
-                className="w-full bg-slate-900 border border-white/5 rounded-xl px-4 py-3 text-slate-100 font-mono focus:outline-none focus:border-purple-500 transition duration-200 text-sm"
+                className="w-full bg-slate-900 border border-white/5 rounded-xl px-4 py-3 text-slate-100 font-mono focus:outline-none focus:border-teal-500 transition duration-200 text-sm"
               />
             </div>
 
@@ -183,7 +183,7 @@ export default function CreateEscrow() {
                 placeholder="100"
                 value={amount}
                 onChange={(e) => setAmount(e.target.value)}
-                className="w-full bg-slate-900 border border-white/5 rounded-xl px-4 py-3 text-slate-100 focus:outline-none focus:border-purple-500 transition duration-200 text-sm"
+                className="w-full bg-slate-900 border border-white/5 rounded-xl px-4 py-3 text-slate-100 focus:outline-none focus:border-teal-500 transition duration-200 text-sm"
               />
             </div>
 
@@ -195,7 +195,7 @@ export default function CreateEscrow() {
                 disabled={loading}
                 value={releaseDate}
                 onChange={(e) => setReleaseDate(e.target.value)}
-                className="w-full bg-slate-900 border border-white/5 rounded-xl px-4 py-3 text-slate-100 focus:outline-none focus:border-purple-500 transition duration-200 text-sm"
+                className="w-full bg-slate-900 border border-white/5 rounded-xl px-4 py-3 text-slate-100 focus:outline-none focus:border-teal-500 transition duration-200 text-sm"
               />
             </div>
           </div>
