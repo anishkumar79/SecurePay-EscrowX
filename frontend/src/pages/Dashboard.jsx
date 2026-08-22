@@ -116,7 +116,7 @@ export default function Dashboard() {
           </div>
           <div>
             <div className="text-slate-400 text-xs">Total Transacted</div>
-            <div className="text-2xl font-bold text-slate-100">{totalVolume} XLM</div>
+            <div className="text-2xl font-bold text-slate-100">{totalVolume} XLM <span className="text-sm text-slate-400 font-normal">(${ (totalVolume * 0.10).toFixed(2) })</span></div>
           </div>
         </div>
         <div className="glass-card p-6 rounded-2xl border border-white/5 flex items-center gap-4">
@@ -125,7 +125,7 @@ export default function Dashboard() {
           </div>
           <div>
             <div className="text-slate-400 text-xs">In Escrow</div>
-            <div className="text-2xl font-bold text-slate-100">{pendingRelease} XLM</div>
+            <div className="text-2xl font-bold text-slate-100">{pendingRelease} XLM <span className="text-sm text-slate-400 font-normal">(${ (pendingRelease * 0.10).toFixed(2) })</span></div>
           </div>
         </div>
         <div className="glass-card p-6 rounded-2xl border border-white/5 flex items-center gap-4">
