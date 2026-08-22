@@ -16,7 +16,7 @@ import {
 
 const NETWORK = import.meta.env.VITE_STELLAR_NETWORK || 'testnet';
 const RPC_URL = import.meta.env.VITE_SOROBAN_RPC_URL || 'https://soroban-testnet.stellar.org:443';
-export const CONTRACT_ADDRESS = import.meta.env.VITE_CONTRACT_ADDRESS || 'CBGL7N5GANUBPAV2UHXC5UBW3JSXGNLAKOMVJD54YNIZF6WN6PHSMQAL';
+export const CONTRACT_ADDRESS = import.meta.env.VITE_CONTRACT_ADDRESS || 'CDT2FAK6BACGLMLXOBPKYGMLOU4KD24Q2BBVYRLHPLTYDN56MCASW32C';
 export const contract = new Contract(CONTRACT_ADDRESS);
 
 export const server = new rpc.Server(RPC_URL);
