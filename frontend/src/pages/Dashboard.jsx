@@ -140,7 +140,7 @@ export default function Dashboard() {
       </div>
 
       {/* Filtering Options */}
-      <div className="flex border-b border-white/5 gap-6 text-sm font-semibold">
+      <div className="flex border-b border-white/5 gap-6 text-sm font-semibold overflow-x-auto whitespace-nowrap scrollbar-hide">
         <button
           onClick={() => setRoleFilter('all')}
           className={`pb-4 transition-all duration-200 border-b-2 cursor-pointer ${roleFilter === 'all' ? 'border-teal-500 text-teal-400' : 'border-transparent text-slate-400 hover:text-slate-200'}`}
