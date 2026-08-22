@@ -101,6 +101,7 @@ export default function Navbar() {
             <Wallet size={16} />
             {connecting ? 'Connecting...' : 'Connect Wallet'}
           </button>
+          </div>
         )}
       </div>
     </nav>
