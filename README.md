@@ -41,13 +41,13 @@ SecurePay: EscrowX is a decentralized, transparent, and low-cost freelance payme
 
 ## 📸 Screenshots & Evidence
 
-| Dashboard & Overview | Contract Lifecycle & Tracking |
+| Landing Page | Mobile Responsive View |
 |:---:|:---:|
-| <img src="screenshots/dashboard.png" width="400" alt="Dashboard"> | <img src="screenshots/progres_tarcker.png" width="400" alt="Progress Tracker"> |
+| <img src="screenshots/landing_page.png" width="400" alt="Landing Page"> | <img src="screenshots/mobile_responsive_ui.png" width="400" alt="Mobile Design"> |
 
-| Mobile Responsive View | Client Deposit & Lock |
-|:---:|:---:|
-| <img src="screenshots/responsive_mobile_tab.png" width="400" alt="Mobile Design"> | <img src="screenshots/client_deposit_lock.png" width="400" alt="Client Deposit"> |
+| Analytics & Tracking |
+|:---:|
+| <img src="screenshots/analytics.png" width="800" alt="Analytics"> |
 
 ---
 
