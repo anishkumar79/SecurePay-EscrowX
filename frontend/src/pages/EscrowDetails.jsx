@@ -296,9 +296,10 @@ export default function EscrowDetails() {
                       disabled={actionLoading}
                       onClick={() => handleAction('refund')}
                       className="bg-rose-500 hover:bg-rose-600 border border-rose-500/10 text-white flex items-center justify-center gap-2 py-3.5 rounded-xl text-sm font-bold cursor-pointer disabled:opacity-50 shadow-lg shadow-rose-500/10 transition-all duration-200"
+                      title="Clients can only refund after the set release time has expired."
                     >
                       {actionLoading ? <Loader2 className="animate-spin" size={16} /> : <RotateCcw size={16} />}
-                      <span>Refund Funds to Client</span>
+                      <span>Refund Funds to Client <span className="opacity-75 font-normal text-xs ml-1">ⓘ</span></span>
                     </button>
                   )
                 )}
