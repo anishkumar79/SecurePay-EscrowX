@@ -37,7 +37,7 @@ export default function Landing() {
         </h1>
 
         <p className="text-lg sm:text-xl text-slate-400 max-w-2xl mx-auto leading-relaxed">
-          EscrowX locks payments in secure smart contracts. Freelancers work with confidence, and clients release funds automatically only when satisfied.
+          SecurePay: EscrowX locks payments in secure smart contracts. Freelancers work with confidence, and clients release funds automatically only when satisfied.
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">

@@ -51,7 +51,7 @@ export default function Navbar() {
           <Shield size={24} />
         </div>
         <Link to="/" className="text-2xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white via-slate-200 to-slate-400">
-          Escrow<span className="text-teal-400">X</span>
+          SecurePay: Escrow<span className="text-teal-400">X</span>
         </Link>
       </div>
 

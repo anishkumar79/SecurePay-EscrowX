@@ -21,7 +21,7 @@ export default function App() {
           </Routes>
         </main>
         <footer className="w-full py-8 text-center text-xs text-slate-600 border-t border-white/5 bg-[#030712]">
-          &copy; {new Date().getFullYear()} EscrowX. Secure Freelance Payments powered by Stellar & Soroban.
+          &copy; {new Date().getFullYear()} SecurePay: EscrowX. Secure Freelance Payments powered by Stellar & Soroban.
         </footer>
       </div>
     </Router>

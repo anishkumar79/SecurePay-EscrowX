@@ -55,7 +55,7 @@ export default function Dashboard() {
           <Wallet className="mx-auto text-teal-400 mb-4 animate-bounce" size={48} />
           <h2 className="text-xl font-bold text-slate-100 mb-2">Connect Your Wallet</h2>
           <p className="text-slate-400 text-sm mb-6 leading-relaxed">
-            Please connect your Freighter wallet using the button in the navigation bar to access your EscrowX dashboard.
+            Please connect your Freighter wallet using the button in the navigation bar to access your SecurePay: EscrowX dashboard.
           </p>
           <Link to="/" className="gradient-btn inline-block px-6 py-3 rounded-xl font-semibold text-sm">
             Back to Home

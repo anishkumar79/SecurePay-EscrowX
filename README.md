@@ -1,12 +1,12 @@
-# 🚀 EscrowX — Secure Freelance Payments on Stellar
+# 🚀 SecurePay: EscrowX — Secure Freelance Payments on Stellar
 
-EscrowX is a decentralized, transparent, and low-cost freelance payment protection escrow application built on the Stellar network using Soroban smart contracts. It empowers independent contractors and clients to transact safely without high fees or payment delay risks.
+SecurePay: EscrowX is a decentralized, transparent, and low-cost freelance payment protection escrow application built on the Stellar network using Soroban smart contracts. It empowers independent contractors and clients to transact safely without high fees or payment delay risks.
 
 ## 🔗 Live Demo & Links
 - **Live Platform**: [https://secure-pay-escrow-x.vercel.app/](https://secure-pay-escrow-x.vercel.app/)
-- **Demo Video**: [Watch the EscrowX Walkthrough](https://youtu.be/mR9KDsVQ5Xw)
+- **Demo Video**: [Watch the SecurePay: EscrowX Walkthrough](https://youtu.be/mR9KDsVQ5Xw)
 - **Example Transaction Hash**: [`afe5e19b3cdbd9b871309bb8477daac0866aab82c7e6078fedd28d1431e15a43`](https://stellar.expert/explorer/testnet/tx/afe5e19b3cdbd9b871309bb8477daac0866aab82c7e6078fedd28d1431e15a43)
-- **EscrowX Contract ID**: `CBGL7N5GANUBPAV2UHXC5UBW3JSXGNLAKOMVJD54YNIZF6WN6PHSMQAL`
+- **SecurePay: EscrowX Contract ID**: `CDT2FAK6BACGLMLXOBPKYGMLOU4KD24Q2BBVYRLHPLTYDN56MCASW32C`
 - **Native XLM SAC**: `CDLZFC3SYJYDZT7K67VZ75HPJVIEUVNIXF47ZG2FB2RMQQVU2HHGCYSC`
 
 ## 🌟 Key Features
