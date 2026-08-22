@@ -6,6 +6,12 @@
     color: #f8fafc; /* text-slate-50 */
     font-family: 'Outfit', sans-serif;
   }
+  body.light-mode {
+    filter: invert(1) hue-rotate(180deg);
+  }
+  body.light-mode img, body.light-mode video, body.light-mode svg {
+    filter: invert(1) hue-rotate(180deg);
+  }
 }
 
 /* Glassmorphism custom card and utility classes */

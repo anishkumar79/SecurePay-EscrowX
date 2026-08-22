@@ -65,6 +65,13 @@ export default function Navbar() {
       <div className="flex items-center gap-3">
         {address ? (
           <div className="flex items-center gap-2">
+            <button
+              onClick={() => document.body.classList.toggle('light-mode')}
+              className="bg-slate-900/60 hover:bg-slate-800/80 border border-white/5 text-amber-400 p-2.5 rounded-xl transition-all duration-200 mr-2"
+              title="Toggle Light/Dark Mode"
+            >
+              ☀
+            </button>
             <div className="flex items-center gap-2 bg-slate-900/80 border border-emerald-500/20 text-emerald-400 px-4 py-2 rounded-xl text-sm font-semibold shadow-inner">
               <CheckCircle size={16} />
               <span>{shortAddress(address)}</span>
@@ -78,8 +85,16 @@ export default function Navbar() {
             </button>
           </div>
         ) : (
-          <button
-            onClick={handleConnect}
+          <div className="flex items-center gap-2">
+            <button
+              onClick={() => document.body.classList.toggle('light-mode')}
+              className="bg-slate-900/60 hover:bg-slate-800/80 border border-white/5 text-amber-400 p-2.5 rounded-xl transition-all duration-200 mr-2"
+              title="Toggle Light/Dark Mode"
+            >
+              ☀
+            </button>
+            <button
+              onClick={handleConnect}
             disabled={connecting}
             className="gradient-btn flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
           >
