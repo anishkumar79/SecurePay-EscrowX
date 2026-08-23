@@ -4,7 +4,8 @@ import { getConnectedAddress, invokeContract, getEscrowDetails } from '../stella
 import { supabase } from '../supabaseClient';
 import { 
   ArrowLeft, Shield, DollarSign, Send, CheckCircle2, RotateCcw, 
-  Loader2, ExternalLink, Calendar, User, Clock, AlertCircle
+  Loader2, ExternalLink, Calendar, User, Clock, AlertCircle,
+  Download, Heart, AlertTriangle
 } from 'lucide-react';
 
 export default function EscrowDetails() {
@@ -316,6 +317,39 @@ export default function EscrowDetails() {
                   >
                     {actionLoading ? <Loader2 className="animate-spin" size={16} /> : <RotateCcw size={16} />}
                     <span>Refund Funds to Client</span>
+                  </button>
+                )}
+
+                {/* 5. Completed Actions (Tip & Receipt) */}
+                {status === 3 && (
+                  <>
+                    <button
+                      onClick={() => window.print()}
+                      className="bg-slate-800 hover:bg-slate-700 text-slate-200 border border-white/5 flex items-center justify-center gap-2 py-3.5 rounded-xl text-sm font-bold cursor-pointer transition-all duration-200"
+                    >
+                      <Download size={16} />
+                      <span>Download PDF Receipt</span>
+                    </button>
+                    {isClient && (
+                      <button
+                        onClick={() => alert('Tipping functionality is coming soon!')}
+                        className="bg-teal-500/10 hover:bg-teal-500/20 text-teal-400 border border-teal-500/20 flex items-center justify-center gap-2 py-3.5 rounded-xl text-sm font-bold cursor-pointer transition-all duration-200"
+                      >
+                        <Heart size={16} />
+                        <span>Tip Freelancer</span>
+                      </button>
+                    )}
+                  </>
+                )}
+
+                {/* 6. Dispute (Active Escrows) */}
+                {(status === 1 || status === 2) && isClient && (
+                  <button
+                    onClick={() => alert('Dispute resolution center is under development.')}
+                    className="bg-amber-500/10 hover:bg-amber-500/20 text-amber-500 border border-amber-500/20 flex items-center justify-center gap-2 py-3.5 rounded-xl text-sm font-bold cursor-pointer transition-all duration-200"
+                  >
+                    <AlertTriangle size={16} />
+                    <span>File Dispute</span>
                   </button>
                 )}
               </div>
