@@ -165,9 +165,13 @@ export default function CreateEscrow() {
 
             <div className="space-y-2">
               <label className="block text-xs font-semibold uppercase tracking-wider text-slate-400">Contract Token</label>
-              <div className="w-full bg-slate-900/60 border border-white/5 rounded-xl px-4 py-3 text-slate-400 text-sm font-semibold select-none">
-                Stellar Lumens (XLM)
-              </div>
+              <select
+                disabled={loading}
+                className="w-full bg-slate-900 border border-white/5 rounded-xl px-4 py-3 text-slate-100 focus:outline-none focus:border-teal-500 transition duration-200 text-sm"
+              >
+                <option value="XLM">Stellar Lumens (XLM)</option>
+                <option value="USDC" disabled>USD Coin (USDC) - Coming Soon</option>
+              </select>
             </div>
           </div>
 
@@ -200,11 +204,25 @@ export default function CreateEscrow() {
             </div>
           </div>
 
-          <div className="pt-4">
+          <div className="pt-4 flex gap-4">
+            <button
+              type="button"
+              disabled={loading}
+              onClick={() => {
+                setTitle('');
+                setDescription('');
+                setFreelancer('');
+                setAmount('');
+                setReleaseDate('');
+              }}
+              className="w-1/3 bg-slate-800 hover:bg-slate-700 text-slate-200 border border-white/5 flex items-center justify-center gap-2 py-4 rounded-xl font-bold cursor-pointer transition disabled:opacity-50 text-sm"
+            >
+              Clear Form
+            </button>
             <button
               type="submit"
               disabled={loading}
-              className="w-full gradient-btn flex items-center justify-center gap-2 py-4 rounded-xl font-bold cursor-pointer transition disabled:opacity-50 text-base"
+              className="w-2/3 gradient-btn flex items-center justify-center gap-2 py-4 rounded-xl font-bold cursor-pointer transition disabled:opacity-50 text-base"
             >
               {loading ? (
                 <>
