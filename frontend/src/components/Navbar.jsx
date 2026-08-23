@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { connectWallet, disconnectWallet, getConnectedAddress } from '../stellar';
-import { Wallet, LogOut, CheckCircle, Shield } from 'lucide-react';
+import { Wallet, LogOut, CheckCircle, Shield, Bell } from 'lucide-react';
 
 export default function Navbar() {
   const [address, setAddress] = useState(getConnectedAddress());
@@ -72,6 +72,13 @@ export default function Navbar() {
             >
               ☀
             </button>
+            <button
+              onClick={() => alert('Push notifications enabled!')}
+              className="bg-slate-900/60 hover:bg-slate-800/80 border border-white/5 text-slate-400 hover:text-white p-2.5 rounded-xl transition-all duration-200 mr-2"
+              title="Enable Notifications"
+            >
+              <Bell size={16} />
+            </button>
             <div className="flex items-center gap-2 bg-slate-900/80 border border-emerald-500/20 text-emerald-400 px-4 py-2 rounded-xl text-sm font-semibold shadow-inner">
               <CheckCircle size={16} />
               <span>{shortAddress(address)}</span>
@@ -92,6 +99,13 @@ export default function Navbar() {
               title="Toggle Light/Dark Mode"
             >
               ☀
+            </button>
+            <button
+              onClick={() => alert('Push notifications enabled!')}
+              className="bg-slate-900/60 hover:bg-slate-800/80 border border-white/5 text-slate-400 hover:text-white p-2.5 rounded-xl transition-all duration-200 mr-2"
+              title="Enable Notifications"
+            >
+              <Bell size={16} />
             </button>
             <button
               onClick={handleConnect}
