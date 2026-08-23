@@ -267,14 +267,17 @@ export default function EscrowDetails() {
 
                 {/* 2. Freelancer Requests Release */}
                 {status === 1 && isFreelancer && (
-                  <button
-                    disabled={actionLoading}
-                    onClick={() => handleAction('request_release')}
-                    className="gradient-btn flex items-center justify-center gap-2 py-3.5 rounded-xl text-sm font-bold cursor-pointer disabled:opacity-50"
-                  >
-                    {actionLoading ? <Loader2 className="animate-spin" size={16} /> : <Send size={16} />}
-                    <span>Request Payment Release</span>
-                  </button>
+                  <div className="space-y-3">
+                    <input type="url" placeholder="Deliverables URL (e.g. Github, Drive, Figma)" className="w-full bg-slate-900/60 border border-white/5 rounded-xl px-4 py-3 text-sm text-slate-200 placeholder:text-slate-500 focus:outline-none focus:border-teal-500/50 transition-colors duration-200" />
+                    <button
+                      disabled={actionLoading}
+                      onClick={() => handleAction('request_release')}
+                      className="gradient-btn w-full flex items-center justify-center gap-2 py-3.5 rounded-xl text-sm font-bold cursor-pointer disabled:opacity-50"
+                    >
+                      {actionLoading ? <Loader2 className="animate-spin" size={16} /> : <Send size={16} />}
+                      <span>Request Payment Release</span>
+                    </button>
+                  </div>
                 )}
 
                 {/* 3. Client Approves Release */}
