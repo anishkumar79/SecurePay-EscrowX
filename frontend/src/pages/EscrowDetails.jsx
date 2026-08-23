@@ -5,7 +5,7 @@ import { supabase } from '../supabaseClient';
 import { 
   ArrowLeft, Shield, DollarSign, Send, CheckCircle2, RotateCcw, 
   Loader2, ExternalLink, Calendar, User, Clock, AlertCircle,
-  Download, Heart, AlertTriangle
+  Download, Heart, AlertTriangle, Star
 } from 'lucide-react';
 
 export default function EscrowDetails() {
@@ -233,6 +233,14 @@ export default function EscrowDetails() {
                 </span>
                 <span className="text-xs font-mono text-slate-300 break-all">{freelancer_address}</span>
                 {isFreelancer && <span className="text-[10px] text-teal-400 font-bold uppercase block">(You)</span>}
+                <div className="flex items-center text-amber-400 pt-1">
+                  <Star size={12} fill="currentColor" />
+                  <Star size={12} fill="currentColor" />
+                  <Star size={12} fill="currentColor" />
+                  <Star size={12} fill="currentColor" />
+                  <Star size={12} fill="currentColor" />
+                  <span className="text-[10px] text-slate-500 ml-1.5 font-bold uppercase tracking-wider">Top Rated</span>
+                </div>
               </div>
             </div>
 
